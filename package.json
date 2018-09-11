@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/kosmos2uh/nodejs2#readme",
   "devDependencies": {
-    "jshint": "^2.9.6"
+    "jshint": "^2.9.6",
+    "nodemon": "^1.18.4"
   }
 }
