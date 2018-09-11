@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/kosmos2uh/nodejs2/issues"
   },
-  "homepage": "https://github.com/kosmos2uh/nodejs2#readme"
+  "homepage": "https://github.com/kosmos2uh/nodejs2#readme",
+  "devDependencies": {
+    "jshint": "^2.9.6"
+  }
 }
