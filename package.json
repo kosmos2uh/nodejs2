@@ -1,0 +1,22 @@
+{
+  "name": "nodejs2",
+  "version": "1.0.0",
+  "description": "my nodejs test project",
+  "main": "play.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kosmos2uh/nodejs2.git"
+  },
+  "keywords": [
+    "nodejs"
+  ],
+  "author": "kos <kosmos2uh@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kosmos2uh/nodejs2/issues"
+  },
+  "homepage": "https://github.com/kosmos2uh/nodejs2#readme"
+}
