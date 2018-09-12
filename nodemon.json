@@ -13,7 +13,9 @@
       },
       "watch": [
         "test/",
-        "bin/"
+        "bin/",
+        "routes/",
+        "views/"
       ],
       "env": {
         "NODE_ENV": "development"
