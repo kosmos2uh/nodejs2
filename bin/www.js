@@ -3,8 +3,10 @@ const app = express();
 const path = require('path');
 const exphbs = require('express-handlebars');
 
-const hostname = '127.0.0.1';
-const port = 3000;
+// const hostname = '127.0.0.1';
+const hostname = 'node.js';
+// const port = 3000;
+const port = 80;
 
 app.use(express.static(path.join(__dirname, '../public')));
 
