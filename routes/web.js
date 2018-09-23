@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
     // res.status = 200;
     // res.writeHead(200, { 'Content-Type': 'html/plain' });
     res.render('home', {
-        name: 'Janus'
+        name: 'Janus-1'
     });
 });
 // define the about route
