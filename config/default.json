@@ -1,0 +1,18 @@
+{
+    "app": {
+      "port": 3000,
+      "host": "127.0.0.1"
+    },
+    
+    "session": {
+      "secret": "secret_key",
+      "key": "cid",
+      "cookie": {
+        "path": "/",
+        "httpOnly": true,
+        "maxAge": null
+      }
+    }
+
+  }
+  

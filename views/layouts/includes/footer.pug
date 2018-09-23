@@ -1,0 +1,40 @@
+footer#footer.footer
+  .container.text-center
+    h3 Come With Me Now!
+    form.mc-trial.row
+      .form-group.col-md-3.col-md-offset-2.col-sm-4
+        .controls
+          input.form-control(name='name', placeholder='Enter Your Name', type='text')
+      .form-group.col-md-3.col-sm-4
+        .controls
+          input.form-control(name='EMAIL', placeholder='Enter Your email', type='email')
+      .col-md-2.col-sm-4
+        p
+          button.btn.btn-block.btn-submit(name='submit', type='submit')
+            | Submit
+            i.fa.fa-arrow-right
+    ul.social-links
+      li
+        a(href='#link')
+          i.fa.fa-twitter.fa-fw
+      li
+        a(href='#link')
+          i.fa.fa-facebook.fa-fw
+      li
+        a(href='#link')
+          i.fa.fa-google-plus.fa-fw
+      li
+        a(href='#link')
+          i.fa.fa-dribbble.fa-fw
+      li
+        a(href='#link')
+          i.fa.fa-linkedin.fa-fw
+    |  &copy;2017 Janus Nic.&nbsp; All rights reserved
+    .credits
+      | Designed by&nbsp; 
+      a(href='#')= appTitle
+
+  script(src='/javascripts/jquery.min.js')
+  script(src='/javascripts/jquery.easing.min.js')
+  script(src='/javascripts/bootstrap.min.js')
+  script(src='/javascripts/custom.js')

@@ -1,0 +1,28 @@
+{
+    "app": {
+      "port": 80,
+      "host": "node.js",
+      "appTitle": "KOS Project",
+      "slogan": "Come With Me Now!"
+    },
+    
+    "session": {
+      "secret": "secret_key",
+      "key": "cid",
+      "cookie": {
+        "path": "/",
+        "httpOnly": true,
+        "maxAge": null
+      }
+    },
+    
+    "transport": {
+      "host": "smtp.gmail.com",
+      "port": 465,
+      "secure": true,
+      "user": "kosmos2uh@gmail.com",
+      "pass": "A0rcnh0n!"
+    }
+
+  }
+  
