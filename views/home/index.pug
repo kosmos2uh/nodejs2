@@ -3,11 +3,16 @@ block variables
   - 
     var page_title = 'I am the home page'
     var description = 'Janus Nic Node Project'
+
 block content
-  section#feature.section-padding
+  section.section-padding
     .container
       .row
         .header-section.text-center
           h2= title
         hr.bottom-line
-
+        ul
+          each val in posts
+            - var ref = "blog/" + val._id
+            li
+              a.alist(href=ref)= val.title

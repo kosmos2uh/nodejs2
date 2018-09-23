@@ -15,6 +15,7 @@
         "config/",
         "middleware/",
         "controllers/",
+        "models/",
         "test/",
         "bin/",
         "routes/",

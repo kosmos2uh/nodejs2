@@ -1,0 +1,18 @@
+include ./includes/admin_head
+
+body(class="fixed-nav sticky-footer bg-dark" id="page-top")
+
+  block navigation
+    include ./includes/admin_nav
+
+  .content-wrapper
+    .container-fluid
+      ol.breadcrumb
+        li.breadcrumb-item
+          a(href='#') Dashboard
+        li.breadcrumb-item.active= breadcrumb
+      .row
+        block content
+
+  block footer
+    include ./includes/admin_footer

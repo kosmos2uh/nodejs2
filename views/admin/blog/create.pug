@@ -1,0 +1,19 @@
+extends ../../layouts/admin
+
+block content
+  .container
+    .card.mx-auto.mt-5
+      .card-header
+        | #{ title }
+      .card-body
+        form(method="POST" action="")
+          .form-group
+            .form-row
+              .col-md-12
+                label(for='postTitle') Post Title
+                input#postTitle.form-control(type='text', aria-describedby='titleHelp', placeholder='Enter post title', name='title' required='true')
+
+          .form-group
+            label(for='postContent') Post Content
+            textarea#postContent.form-control(type='textarea', aria-describedby='contenrHelp', rows="5" cols="80", placeholder='Enter Content', name='content' required='true')
+          button.btn.btn-primary.btn-block(type='submit') Save Post

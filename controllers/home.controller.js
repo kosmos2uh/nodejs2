@@ -1,9 +1,17 @@
 const nodemailer = require('nodemailer');
+const models = require('../models');
 const config = require('../config');
 
 module.exports = {
   index: (req, res) => {
-    res.render('home/index', { appTitle: config.get('app:appTitle'), title: 'Home Page', data: '' });
+    models.Post.recent((err, docs) => {
+        res.render('home/index', { 
+            title: 'Home Page',
+            appTitle: config.get('app:appTitle'),
+            posts: docs 
+        });
+    });
+    // res.render('home/index', { appTitle: config.get('app:appTitle'), title: 'Home Page', data: '' });
   },
 
   about: (req, res) => {
@@ -16,9 +24,6 @@ module.exports = {
 
   send: (req, res) => {
     const transporter = nodemailer.createTransport({
-      // host: config.get('transport:host'),
-      // port: config.get('transport:port'),
-      // secure: config.get('transport:secure'),
       service: 'Gmail',
       auth: {
         user: config.get('transport:user'),

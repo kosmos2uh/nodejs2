@@ -1,0 +1,80 @@
+nav#mainNav.navbar.navbar-expand-lg.navbar-dark.bg-dark.fixed-top
+  a.navbar-brand(href='/admin') Janus Admin
+  button.navbar-toggler.navbar-toggler-right(type='button', data-toggle='collapse', data-target='#navbarResponsive', aria-controls='navbarResponsive', aria-expanded='false', aria-label='Toggle navigation')
+    span.navbar-toggler-icon
+  #navbarResponsive.collapse.navbar-collapse
+    ul#accordion.navbar-nav.navbar-sidenav
+      li.nav-item(data-toggle='tooltip', data-placement='right', title='Dashboard')
+        a.nav-link(href='/admin')
+          i.fa.fa-fw.fa-dashboard
+          span.nav-link-text Dashboard
+      li.nav-item(data-toggle='tooltip', data-placement='right', title='Categories')
+        a.nav-link(href='/admin/categories')
+          i.fa.fa-fw.fa-area-chart
+          span.nav-link-text Categories
+      li.nav-item(data-toggle='tooltip', data-placement='right', title='Blog Posts')
+        a.nav-link(href='/admin/blog')
+          i.fa.fa-fw.fa-table
+          span.nav-link-text Posts
+      li.nav-item(data-toggle='tooltip', data-placement='right', title='Components')
+        a.nav-link.nav-link-collapse.collapsed(data-toggle='collapse', href='#collapseComponents', data-parent='#accordion')
+          i.fa.fa-fw.fa-wrench
+          span.nav-link-text Components
+        ul#collapseComponents.sidenav-second-level.collapse
+          li
+            a(href='navbar.html') Navbar
+          li
+            a(href='cards.html') Cards
+      li.nav-item(data-toggle='tooltip', data-placement='right', title='Example Pages')
+        a.nav-link.nav-link-collapse.collapsed(data-toggle='collapse', href='#collapsePages', data-parent='#accordion')
+          i.fa.fa-fw.fa-file
+          span.nav-link-text Example Pages
+        ul#collapsePages.sidenav-second-level.collapse
+          li
+            a(href='login.html') Login Page
+          li
+            a(href='register.html') Registration Page
+          li
+            a(href='forgot-password.html') Forgot Password Page
+          li
+            a(href='blank.html') Blank Page
+      li.nav-item(data-toggle='tooltip', data-placement='right', title='Menu Levels')
+        a.nav-link.nav-link-collapse.collapsed(data-toggle='collapse', href='#collapseMulti', data-parent='#accordion')
+          i.fa.fa-fw.fa-sitemap
+          span.nav-link-text Menu Levels
+        ul#collapseMulti.sidenav-second-level.collapse
+          li
+            a(href='#') Second Level Item
+          li
+            a(href='#') Second Level Item
+          li
+            a(href='#') Second Level Item
+          li
+            a.nav-link-collapse.collapsed(data-toggle='collapse', href='#collapseMulti2') Third Level
+            ul#collapseMulti2.sidenav-third-level.collapse
+              li
+                a(href='#') Third Level Item
+              li
+                a(href='#') Third Level Item
+              li
+                a(href='#') Third Level Item
+      li.nav-item(data-toggle='tooltip', data-placement='right', title='Link')
+        a.nav-link(href='#')
+          i.fa.fa-fw.fa-link
+          span.nav-link-text Link
+    ul.navbar-nav.sidenav-toggler
+      li.nav-item
+        a#sidenavToggler.nav-link.text-center
+          i.fa.fa-fw.fa-angle-left
+    ul.navbar-nav.ml-auto
+      li.nav-item
+        form.form-inline.my-2.my-lg-0.mr-lg-2
+          .input-group
+            input.form-control(type='text', placeholder='Search for...')
+            span.input-group-btn
+              button.btn.btn-primary(type='button')
+                i.fa.fa-search
+      li.nav-item
+        a.nav-link(data-toggle='modal', data-target='#exampleModal')
+          i.fa.fa-fw.fa-sign-out
+          | Logout

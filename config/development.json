@@ -22,6 +22,12 @@
       "secure": true,
       "user": "kosmos2uh@gmail.com",
       "pass": "A0rcnh0n!"
+    },
+
+    "mongodb": {
+      "host":"localhost",
+      "port": 27017,
+      "dbname":"coolsite"
     }
 
   }

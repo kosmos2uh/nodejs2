@@ -1,0 +1,17 @@
+extends ../layouts/app
+block variables
+  - 
+    var page_title = 'Blog page list'
+    var description = 'Janus Nic Node Blog'
+block content
+  section.section-padding
+    .container
+      .row
+        .header-section.text-center
+          h2= title
+        hr.bottom-line
+        ul
+          each val in posts
+            - var ref = "blog/" + val._id
+            li
+              a.alist(href=ref)= val.title

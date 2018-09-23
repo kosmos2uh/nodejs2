@@ -6,7 +6,6 @@ function Config() {
   nconf.argv().env();
 
   const environment = nconf.get('NODE_ENV') || 'development';
-  console.log(environment);
 
   nconf.file({ file: path.join(__dirname, './' + environment.toLowerCase() + '.json') });
 
