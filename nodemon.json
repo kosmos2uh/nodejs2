@@ -13,8 +13,9 @@
       },
       "watch": [
         "config/",
-        "middleware/",
         "controllers/",
+        "database/",
+        "middleware/",
         "models/",
         "test/",
         "bin/",
