@@ -28,6 +28,15 @@
       "host":"localhost",
       "port": 27017,
       "dbname":"coolsite"
+    },
+
+    "db": {
+      "connection": "mongodb://localhost",
+      "name": "coolsite",
+      "options":{
+        "keepAlive": 300000,
+        "connectTimeoutMS": 30000
+      }
     }
 
   }

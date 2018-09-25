@@ -1,44 +1,60 @@
-const db = require('../database/db');
-let ObjectId = require('mongodb').ObjectID;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-module.exports = {
+const postSchema = new Schema({
 
-all: (cb) => {
-  let collection = db.get().collection('posts');
+    title:  { type: String, required: true },
+    content: { type: String, required: true},
+    status: { 
+      type: String,
+      enum: ['published', 'private', 'draft'],
+      default: 'draft'
+    },
+    
+    hidden: { 
+      type: Boolean,
+      default: false
+    },
+    
+    meta: {
+        votes: Number,
+        favs:  Number
+    },
+    
+    thumbnail: Buffer,
 
-  collection.find().toArray((err, docs) => {
-    cb(err, docs);
-  });
-},
+    category: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Category', required: true }],
+    
+    author: { 
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'Profile'
+    },
+    
+    comments: [{ body: String, date: Date }],
 
-recent: (cb) => {
-  let collection = db.get().collection('posts');
+    ratings: [
+        {
+            summary: String,
+            detail: String,
+            numberOfStars: Number,
+            created: { 
+                type: Date,
+                default: Date.now
+            }
+        }
+    ],
+    created: { 
+        type: Date,
+        default: Date.now
+    }
+});
 
-  collection.find().sort({'updated_at': -1}).limit(100).toArray((err, docs) => {
-    cb(err, docs);
-  });
-},
+postSchema
+    .virtual('url')
+    .get(function () {
+      return '/admin/post/'+this._id;
+    });
 
-
-detail: (post_id, cb) => {
-  let collection = db.get().collection('posts');
-  
-  // collection.find({"_id": new ObjectId(post_id)}).limit(1).next(
-  // (err, docs) => {
-  //     cb(err, docs);
-  //  });
-
-  collection.findOne({"_id": new ObjectId(post_id)},
-  (err, docs) => {
-      cb(err, docs);
-   });
-},
-
- store: (post, cb) => {
-    let collection = db.get().collection('posts');
-    collection.insert(post, (err, result) => {
-        cb(err, result);
-     }
-    );
-  },
-};
+ 
+const Post = mongoose.model('Post', postSchema);
+module.exports = Post;

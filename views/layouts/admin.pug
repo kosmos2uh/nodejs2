@@ -12,7 +12,8 @@ body(class="fixed-nav sticky-footer bg-dark" id="page-top")
           a(href='#') Dashboard
         li.breadcrumb-item.active= breadcrumb
       .row
-        block content
+        .col-md-12
+          block content
 
   block footer
     include ./includes/admin_footer

@@ -1,0 +1,32 @@
+extends ../../layouts/admin
+
+block content
+
+  section.section-padding
+      hr.bottom-line
+
+      if errors
+        ul
+         for error in errors
+           li!= error.msg
+
+      .card
+        .card-block
+          .card-header
+            i.fa.fa-table 
+            |  #{title}
+            a(href='/admin/categories' class='m-auto float-right btn btn-info') Go back
+          .card-body
+            .table-responsive
+              table#dataTable.table.table-bordered(width='100%', cellspacing='0')
+
+                form(method='POST' action='')
+                  tbody
+                    tr.form-group
+                      td
+                        label(for='name') Category:
+                      td 
+                        input#name.form-control(type='text', placeholder='javascript, nodejs etc.' name='name' required='true' value=(undefined===category ? '' : category.name) )
+
+                      td
+                         button.btn.btn-primary(type='submit') Submit
