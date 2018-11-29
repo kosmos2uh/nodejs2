@@ -27,19 +27,27 @@
     "superagent": "^3.8.3"
   },
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.3",
     "connect-mongo": "^2.0.2",
+    "connect-redis": "^3.4.0",
     "cookie-parser": "^1.4.3",
+    "csurf": "^1.9.0",
     "dotenv": "^6.1.0",
     "express": "^4.16.4",
+    "express-flash": "0.0.2",
     "express-handlebars": "^3.0.0",
     "express-session": "^1.15.6",
     "express-validator": "^5.3.0",
+    "moment-timezone": "^0.5.23",
     "mongodb": "^3.1.10",
     "mongoose": "^5.3.14",
     "morgan": "^1.9.1",
     "nconf": "^0.10.0",
     "nodemailer": "^4.7.0",
+    "osascript": "^1.2.0",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
     "pug": "^2.0.3",
     "serve-favicon": "^2.5.0"
   }

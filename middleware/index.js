@@ -1,5 +1,9 @@
+const path = require('path');
+
+require('dotenv').config({path:__dirname+'/../.env.dev'});
+
   const express = require('express');
-  const path = require('path');
+
   const logger = require('morgan');
   const favicon = require('serve-favicon');
   const expressValidator = require('express-validator');
@@ -10,6 +14,11 @@
   const mongoose = require('../database/db');
   const index = require('../routes');
   const MongoStore = require('connect-mongo')(session);
+
+  const passport = require('passport');
+
+  const csrf = require('csurf');
+  const flash = require('express-flash');
 
   const app = express();
 
@@ -27,7 +36,8 @@
 
 
   app.use(bodyParser.json());
-  app.use(bodyParser.urlencoded({ extended: true }));
+  
+  app.use(bodyParser.urlencoded({ extended: false }));
 
   app.use(expressValidator());
   
@@ -35,21 +45,35 @@
   app.use(cookieParser());
 
   app.use(session({
-    secret: config.get('session:secret'),
-    key: config.get('session:key'),
-    cookie: config.get('session:cookie'),
-    resave: true,
-    saveUninitialized: true,
-    store: new MongoStore({
-        url: config.get('db:connection') + '/' + config.get('db:name'),
-        autoReconnect: true,
-        clear_interval: 3600
-    })
+    name: config.session.name,
+    resave: false,
+    saveUninitialized: false,
+    secret: config.session.secret,
+    key: config.session.key,
+    store: new MongoStore({ url: config.db.uri, autoReconnect: true, clear_interval: 3600 }),
+    cookie: {
+      httpOnly: true,
+      maxAge: 1000 * 60 * 60,
+      secure: 'auto'
+    }
   }));
 
+  // csrf protection MUST be defined after cookieParser and session middleware
+  app.use(csrf({ cookie: true }));
+
+  // passport needs to come after session initialization
+  app.use(passport.initialize());
+  app.use(passport.session());
+  app.use(flash());
 
   // Public directory
   app.use(express.static(path.join(__dirname, '../public')));
+
+  // pass the user object to all responses
+  app.use(function(req, res, next) {
+    res.locals.user = req.user;
+    next();
+  });
 
   // Routing
 

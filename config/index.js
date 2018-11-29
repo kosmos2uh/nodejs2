@@ -1,19 +1,28 @@
-// config/index.js
-const nconf = require('nconf');
-const path = require('path');
-
-function Config() {
-  nconf.argv().env();
-
-  const environment = nconf.get('NODE_ENV') || 'development';
-
-  nconf.file({ file: path.join(__dirname, './' + environment.toLowerCase() + '.json') });
-
-  nconf.file('default', './default.json');
-}
-
-Config.prototype.get = (key) => {
-  return nconf.get(key);
+module.exports = {
+    db: {
+        uri: process.env.DB_CONNECTION + ':' + process.env.MONGODB_PORT + '/' +  process.env.DB_NAME,
+        options:{
+              "keepAlive": 300000,
+              "connectTimeoutMS": 30000,
+              "useNewUrlParser": true
+              }
+    },
+    email: {
+        apiKey: process.env.SENDGRID_API_KEY,
+        sendFrom: process.env.SEND_EMAILS_FROM
+    },
+    login: {
+        maxAttempts: process.env.MAX_LOGIN_ATTEMPTS,
+        lockoutHours: process.env.LOGIN_ATTEMPTS_LOCKOUT_HOURS * 60 * 60 * 1000,
+        minimumPasswordLength: process.env.MINIMUM_PASSWORD_LENGTH,
+        passwordResetTimeLimitInHours: process.env.PASSWORD_RESET_TIME_LIMIT_IN_HOURS,
+        passwordHashRounds: parseInt(process.env.PASSWORD_HASH_ROUNDS, 10)
+    },
+    server: {
+        timezone: process.env.TZ
+    },
+    session: {
+        name: process.env.SESSION_NAME,
+        secret: process.env.SESSION_SECRET
+    }
 };
-
-module.exports = new Config();

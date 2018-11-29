@@ -179,7 +179,7 @@ post_update_get: function(req, res, next) {
                     }
                 }
             }
-
+            console.log("results.post ", results.post);
             res.render('admin/posts/form', { title: 'Update post', categories:results.categories, post: results.post });
         });
 
@@ -233,8 +233,8 @@ post_update_post: function(req, res, next) {
     else {
         models.Post.findByIdAndUpdate(req.params.id, post, {}, function (err,thepost) {
             if (err) { return next(err); }
-               res.redirect(thepost.url);
-            });
+            res.redirect(thepost.url);
+        });
     }
 
 },

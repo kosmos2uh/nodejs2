@@ -32,10 +32,12 @@
 
     "db": {
       "connection": "mongodb://localhost",
+      "port": 27017,
       "name": "coolsite",
       "options":{
         "keepAlive": 300000,
-        "connectTimeoutMS": 30000
+        "connectTimeoutMS": 30000,
+        "useNewUrlParser": true
       }
     }
 

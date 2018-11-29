@@ -126,6 +126,7 @@ category_update_get: (req, res, next) => {
     req.sanitize('id').trim();
     models.Category.findById(req.params.id, (err, category) => {
         if (err) { return next(err); }
+
         res.render('admin/categories/form', { title: 'Update Category', breadcrumb: 'Edit Category', category: category });
     });
 
