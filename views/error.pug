@@ -1,8 +1,9 @@
 extends layouts/app
 
 block content
-  section#feature.section-padding
-    .container
-      .row
-        .header-section.text-center 404
-
+    .card-panel.red.darken-2.white-text
+        i.material-icons.left error_outline
+        | #{message}
+    pre #{error.stack}
+    p
+        a.btn.waves-effect.waves-light(href="/") Go home

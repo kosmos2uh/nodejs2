@@ -78,6 +78,7 @@ user_update_post: (req, res, next) => {
    
     let user = new models.User(
       { email: req.body.email,
+        role: req.body.role,
        _id: req.params.id,
        isVerified: (req.body.isVerified==='on')?true:false
        });

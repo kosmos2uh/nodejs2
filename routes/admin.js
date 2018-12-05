@@ -1,5 +1,7 @@
 const router = require('express').Router();
 const controllers = require('../controllers/admin');
+// const acl = require('../middleware/authorization').getAcl();
+const shared = require('../shared');
 
 router.get('/', controllers.dashboard_controller.index);
 

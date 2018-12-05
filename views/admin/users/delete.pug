@@ -1,0 +1,20 @@
+extends ../../layouts/admin
+
+block content
+  section.section-padding
+      hr.bottom-line
+
+      if errors
+        ul
+         for error in errors
+           li!= error.msg
+  hr
+
+  p Do you really want to delete this user?
+
+  form(method='POST' action='')
+    div.form-group
+      input(type="hidden", name="_csrf", value=csrf)
+      input#id.form-control(type='hidden', name='id', required='true', value=user._id )
+
+    button.btn.btn-primary(type='submit') Delete

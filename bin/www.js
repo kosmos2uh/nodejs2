@@ -8,11 +8,11 @@ const port = normalizePort(process.env.APP_PORT || 3000);
 app.set('port', port);
 
 app.listen(port, (err) => {
-    if (err) {
-        return console.log('something bad happened', err);
-    }
-    console.log(`Server running at http://${process.env.APP_HOST}:${port}/`);
-    console.log(process.env);
+  if (err) {
+    return console.log('something bad happened', err);
+  }
+  console.log(`Server running at http://${process.env.APP_HOST}:${port}/`);
+  // console.log(process.env);
 });
 
 app.on('error', onError);

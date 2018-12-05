@@ -24,5 +24,35 @@ module.exports = {
     session: {
         name: process.env.SESSION_NAME,
         secret: process.env.SESSION_SECRET
-    }
+    },
+
+    github: {
+        clientID: process.env.GITHUB_CLIENT_ID,
+        clientSecret: process.env.GITHUB_CLIENT_SECRET,
+        callbackURL: "http://" + process.env.APP_HOST + "/auth/github/callback"
+    },
+
+    linkedin: {
+        clientID: process.env.LINKEDIN_CLIENT_ID,
+        clientSecret: process.env.LINKEDIN_CLIENT_ID,
+        callbackURL: "http://" + process.env.APP_HOST + "/auth/linkedin/callback"
+    },
+
+    twitter: {
+        consumerKey: process.env.TWITTER_CONSUMER_KEY,
+        consumerSecret: process.env.TWITTER_CONSUMER_SECRET,
+        callbackURL: "http://" + process.env.APP_HOST + "/auth/twitter/callback"
+    },
+
+    facebook: {
+        clientID: process.env.FACEBOOK_CLIENT_ID,
+        clientSecret: process.env.FACEBOOK_CLIENT_ID,
+        callbackURL: "http://" + process.env.APP_HOST + "/auth/facebook/callback"
+    },
+    google: {
+        clientID: process.env.GOOGLE_CLIENT_ID,
+        clientSecret: process.env.GOOGLE_CLIENT_ID,
+        callbackURL: "http://" + process.env.APP_HOST + "/auth/facebook/callback"
+    },
+
 };

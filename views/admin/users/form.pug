@@ -1,0 +1,49 @@
+extends ../../layouts/admin
+
+block content
+
+  section.section-padding
+      hr.bottom-line
+
+      if errors
+        ul
+         for error in errors
+           li!= error.msg
+
+      .card
+        .card-block
+          .card-header
+            i.fa.fa-users 
+            |  #{title}
+            a(href='/admin/users' class='m-auto float-right btn btn-info') Go Back
+          .card-body
+            .table-responsive
+              table#dataTable.table.table-bordered(width='100%', cellspacing='0')
+
+                form(method='POST' action='')
+                  tbody
+                    input(type="hidden", name="_csrf", value=csrf)
+                    tr.form-group
+                      td
+                        label(for='email') Email:
+                      td 
+                        input#email.form-control(type='email', placeholder='Users email' name='email' required='true' value=(undefined===user ? '' : user.email) )
+
+                    tr.form-group
+                      td
+                        label isVerified:
+                      td 
+                        div(style='display: inline; padding-right:10px;') 
+                          input.checkbox-input(type='checkbox', name='isVerified', checked=user.checked )
+
+                    tr.form-group
+                      td
+                        label Role:
+                      td 
+                        - lists = ['user', 'manager', 'admin']
+                        select(name='role', id="role", class='custom-select')
+                          for list in lists
+                            option(value=list, selected =(undefined===user ? '' : (user.role===list)?  'selected':false))=list
+                    tr.form-group
+                      td(colspan=2)
+                         button.btn.btn-primary(type='submit') Submit
