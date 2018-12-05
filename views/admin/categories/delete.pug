@@ -22,6 +22,7 @@ block content
     p Do you really want to delete this Category?
 
     form(method='POST' action='')
+      input(type="hidden", name="_csrf", value=csrf)
       div.form-group
         input#id.form-control(type='hidden',name='id', required='true', value=category._id )
 

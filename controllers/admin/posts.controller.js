@@ -72,7 +72,8 @@ post_create_get: (req, res, next) => {
           { 
             title: 'Create New Post', 
             categories:results.categories,
-            breadcrumb: 'Create New Post' 
+            breadcrumb: 'Create New Post',
+              csrf: req.csrfToken()
           });
     });
 },
@@ -135,7 +136,7 @@ post_delete_get: function(req, res, next) {
         },
     }, function(err, results) {
         if (err) { return next(err); }
-        res.render('admin/posts/delete', { title: 'Delete post', post: results.post } );
+        res.render('admin/posts/delete', { title: 'Delete post', post: results.post, csrf: req.csrfToken() } );
     });
 
 },
@@ -180,7 +181,12 @@ post_update_get: function(req, res, next) {
                 }
             }
             console.log("results.post ", results.post);
-            res.render('admin/posts/form', { title: 'Update post', categories:results.categories, post: results.post });
+            res.render('admin/posts/form', {
+                title: 'Update post',
+                categories:results.categories,
+                post: results.post,
+                csrf: req.csrfToken()
+            });
         });
 
 },
