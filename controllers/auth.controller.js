@@ -176,18 +176,23 @@ exports.forgotPassword = {
 				console.log(err);
 				req.flash('errors', { msg: 'There was an error setting your password reset token.  Please try again.' });
 				return res.redirect('/user/forgot');
+			} else if(null === user){
+                req.flash('errors', { msg: 'Пользователь с таким имейлом не найден' });
+                return res.redirect('/user/forgot');
 			}
 
-			shared.sendEmail(req.body.email, config.email.sendFrom, 'Password Reset Requested', '<p>You are receiving this email because you requested a password reset.  You have until ' + passwordResetExpires.format('LT z') + ' to reset your password.  You may ignore this email and your password will remain unchanged.</p><a href="' + shared.constructUrl(req, '/users/reset/' + passwordResetToken) + '">Reset your password</a>', 'text/html', function(err, response) {
-					if (err) {
-						console.log(err);
-						req.flash('errors', { msg: 'There was an error sending your password reset email.  Please try again.' });
-						return res.redirect('/user/forgot');
-					}
+			let mail_message = '<p>Вы получили данное письмо, так как нами был получен запрос на сброс пароля. Чтобы сменить пароль, вам нужно до ' + passwordResetExpires.format('LT z') + ' сбросить пароль. Вы можете проигнорировать данное письмо, в этом случае пароль не изменится.</p><a href="' + shared.constructUrl(req, '/users/reset/' + passwordResetToken) + '">Сбросить пароль</a>';
 
-					req.flash('info', { msg: 'A password reset email has been sent to <em>' + req.body.email + '</em> with further instructions.' });
-					res.redirect('/');
-				});
+			shared.sendEmail(req.body.email, config.email.sendFrom, 'Запрос на сброс пароля', mail_message, 'text/html', function(err, response) {
+				if (err) {
+					console.log(err);
+					req.flash('errors', { msg: 'Ошибка отправки письма. Пожалуйста, попробуйте позже.' });
+					return res.redirect('/user/forgot');
+				}
+
+				req.flash('info', { msg: 'Письмо с дальнейшими инструкциями о сбросе пароля было отправлено на <em>' + req.body.email + '</em>.' });
+                return res.redirect('/');
+			});
 		});
 	}
 };

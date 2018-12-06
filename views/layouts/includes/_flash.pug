@@ -1,0 +1,21 @@
+if (typeof messages !== 'undefined')
+  if messages.errors
+    each error in messages.errors
+      hr.bottom-line
+      .card.mb-3
+        .card-block
+          .card-header
+            i.fa.fa-table
+            span.text-danger !{error.msg}
+
+  if messages.info
+    each info in messages.info
+      .card-header
+        i.fa.fa-table
+        span.text-info !{info.msg}
+
+  if messages.success
+    each success in messages.success
+      .card-header
+        i.fa.fa-table
+        span.text-success !{success.msg}

@@ -3,6 +3,8 @@ const config = require('../config');
 
 mongoose.Promise = global.Promise;
 
+mongoose.set('useFindAndModify', false);
+
 mongoose.connect(
   config.db.uri, config.db.options)
   .then(() => console.log('connection succesful'))
