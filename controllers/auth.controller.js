@@ -169,7 +169,8 @@ exports.forgotPassword = {
 		}
 
 		let passwordResetToken = shared.createRandomToken();
-		let passwordResetExpires = moment().add(config.login.passwordResetTimeLimitInHours, 'hours').tz(config.server.timezone);
+		//let passwordResetExpires = moment().add(config.login.passwordResetTimeLimitInHours, 'hours').tz(config.server.timezone);
+		let passwordResetExpires = moment().add(config.login.passwordResetTimeLimitInHours, 'h').tz(config.server.timezone);
 
 		models.User.findOneAndUpdate({ email: req.body.email }, { passwordResetToken: passwordResetToken, passwordResetExpires: passwordResetExpires }, function(err, user) {
 			if (err) {
@@ -181,7 +182,7 @@ exports.forgotPassword = {
                 return res.redirect('/user/forgot');
 			}
 
-			let mail_message = '<p>Вы получили данное письмо, так как нами был получен запрос на сброс пароля. Чтобы сменить пароль, вам нужно до ' + passwordResetExpires.format('LT z') + ' сбросить пароль. Вы можете проигнорировать данное письмо, в этом случае пароль не изменится.</p><a href="' + shared.constructUrl(req, '/users/reset/' + passwordResetToken) + '">Сбросить пароль</a>';
+			let mail_message = '<p>Вы получили данное письмо, так как нами был получен запрос на сброс пароля. Чтобы сменить пароль, вам нужно до ' + passwordResetExpires.format('LT z') + ' сбросить пароль. Вы можете проигнорировать данное письмо, в этом случае пароль не изменится.</p><a href="' + shared.constructUrl(req, '/user/reset-password/' + passwordResetToken) + '">Сбросить пароль</a>';
 
 			shared.sendEmail(req.body.email, config.email.sendFrom, 'Запрос на сброс пароля', mail_message, 'text/html', function(err, response) {
 				if (err) {
@@ -204,6 +205,7 @@ exports.resetPassword = {
 			return res.redirect('/');
 		}
 
+		console.log(moment().tz(config.server.timezone));
 		models.User
 			.findOne({ passwordResetToken: req.params.passwordResetToken })
 			.where('passwordResetExpires').gt(moment().tz(config.server.timezone))
@@ -224,7 +226,7 @@ exports.resetPassword = {
 	},
 	post: function(req, res, next) {
 		req.assert('password', 'Please enter a password of at least ' + config.login.minimumPasswordLength + ' characters.').len(config.login.minimumPasswordLength);
-		req.assert('confirmPassword', 'Your passwords must match.').equals(req.body.password);
+		req.assert('confirm', 'Your passwords must match.').equals(req.body.password);
 
 		let errors = req.validationErrors();
 
@@ -249,10 +251,10 @@ exports.resetPassword = {
 				}
 
 				user.password = req.body.password;
-				user.passwordResetToken = undefined;
-				user.passwordResetExpires = undefined;
-				user.loginAttempts = 0;
-				user.lockUntil = undefined;
+				//user.passwordResetToken = '';
+				//user.passwordResetExpires = '';
+				//user.loginAttempts = 0;
+				//user.lockUntil = '';
 
 				user.save(function(err) {
 					if (err) {
@@ -261,7 +263,7 @@ exports.resetPassword = {
 						return res.redirect('back');
 					}
 
-					req.flash('success', { msg: 'Your password has been successfully updated.  You may now log in with your new password.' });
+					req.flash('success', { msg: 'Your password has been successfully updated. You may now log in with your new password.' });
 					res.redirect('/user/login');
 				});
 			});
