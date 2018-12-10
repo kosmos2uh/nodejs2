@@ -1,9 +1,10 @@
 const passport = require('passport');
-const LinkedInStrategy = require('passport-linkedin');
+const LinkedInStrategy = require('passport-linkedin').Strategy;
 
 const models = require('../../models');
 const config = require('../../config');
 const init = require('./init');
+
 
 passport.use(new LinkedInStrategy({
     consumerKey: config.linkedin.clientID,

@@ -34,7 +34,7 @@ module.exports = {
 
     linkedin: {
         clientID: process.env.LINKEDIN_CLIENT_ID,
-        clientSecret: process.env.LINKEDIN_CLIENT_ID,
+        clientSecret: process.env.LINKEDIN_CLIENT_SECRET,
         callbackURL: "http://" + process.env.APP_HOST + "/auth/linkedin/callback"
     },
 
@@ -46,7 +46,7 @@ module.exports = {
 
     facebook: {
         clientID: process.env.FACEBOOK_CLIENT_ID,
-        clientSecret: process.env.FACEBOOK_CLIENT_ID,
+        clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
         callbackURL: "http://" + process.env.APP_HOST + "/auth/facebook/callback"
     },
     google: {

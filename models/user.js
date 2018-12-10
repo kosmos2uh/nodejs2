@@ -44,8 +44,11 @@ const userSchema = new mongoose.Schema(
 
   lockUntil: Date,
   role: String,
- 
-  }
+  name: String,
+  socID: String,
+
+
+}
 );
 
 userSchema.virtual('isLocked').get(() => {
