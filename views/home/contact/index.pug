@@ -10,6 +10,7 @@ block content
         .header-section.text-center
           h1= title
           form(role='form', method='post', action='/send')
+            input(type="hidden", name="_csrf", value=csrf)
             .form-group
               label Subject
               input.form-control(type='text', name='subject', placeholder='Enter Subject', value='Hello There')

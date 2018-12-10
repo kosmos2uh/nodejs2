@@ -20,19 +20,19 @@ module.exports = {
     },
 
   about: (req, res) => {
-    res.render('home/about', { appTitle: config.get('app:appTitle'), title: 'About Page', data: '' });
+    res.render('home/about', { appTitle: process.env.APP_TITLE, title: 'About Page', data: '' });
   },
 
   contact: (req, res) => {
-    res.render('home/contact/index', { appTitle: config.get('app:appTitle'), title: 'Contact Page', data: '' });
+    res.render('home/contact/index', { appTitle: process.env.APP_TITLE, title: 'Contact Page', data: '', csrf: req.csrfToken() });
   },
 
   send: (req, res) => {
     const transporter = nodemailer.createTransport({
       service: 'Gmail',
       auth: {
-        user: config.get('transport:user'),
-        pass: config.get('transport:pass'),
+        user: process.env.SMTP_USER,//config.get('transport:user'),
+        pass: process.env.SMTP_PASSWORD,//config.get('transport:pass'),
       },
     });
 
