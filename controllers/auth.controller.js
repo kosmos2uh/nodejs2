@@ -40,7 +40,7 @@ exports.login = {
 				if (err) {
 					return next(err);
 				}
-
+                req.flash('success', { msg: 'Your login has been successfully.'+ user._id});
 				res.redirect('/');
 			});
 		})(req, res, next);

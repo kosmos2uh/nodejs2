@@ -38,12 +38,18 @@ block content
 
                     tr.form-group
                       td
+                        label User Name:
+                      td 
+                        input#name.form-control(type='text', placeholder='User name' name='name' value=(undefined===user ? '' : user.profile.name) )
+
+                    tr.form-group
+                      td
                         label Role:
                       td 
                         - lists = ['user', 'manager', 'admin']
-                        select(name='role', id="role", class='custom-select')
+                        select(name='roles', id="roles", class='custom-select')
                           for list in lists
-                            option(value=list, selected =(undefined===user ? '' : (user.role===list)?  'selected':false))=list
+                            option(value=list, selected =(undefined===user ? '' : (user.roles[0]===list)?  'selected':false))=list
                     tr.form-group
                       td(colspan=2)
                          button.btn.btn-primary(type='submit') Submit

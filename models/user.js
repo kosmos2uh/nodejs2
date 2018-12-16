@@ -29,9 +29,9 @@ const userSchema = new mongoose.Schema(
     default: false 
   },
   
-  passwordResetToken: {
-    type: String,
-    unique: true
+  passwordResetToken: { 
+    type: String, 
+    unique: true 
   },
 
   passwordResetExpires: Date,
@@ -43,12 +43,21 @@ const userSchema = new mongoose.Schema(
   },
 
   lockUntil: Date,
-  role: String,
-  name: String,
-  socID: String,
+  
+  roles: {
+        type:    Array,
+        default: ['user']
+    },
 
-
-}
+  profile: {
+        name:     String,
+        gender:   String,
+        zipCode:  String
+    },
+  
+  socID: String
+ 
+  }
 );
 
 userSchema.virtual('isLocked').get(() => {

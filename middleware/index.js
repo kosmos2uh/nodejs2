@@ -47,7 +47,7 @@ require('dotenv').config({path:__dirname+'/../.env.dev'});
   app.use(session({
     name: config.session.name,
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
     secret: config.session.secret,
     key: config.session.key,
     store: new MongoStore({ url: config.db.uri, autoReconnect: true, clear_interval: 3600 }),
@@ -61,10 +61,13 @@ require('dotenv').config({path:__dirname+'/../.env.dev'});
   // csrf protection MUST be defined after cookieParser and session middleware
   app.use(csrf({ cookie: true }));
 
+  app.use(flash());
+
+
   // passport needs to come after session initialization
   app.use(passport.initialize());
   app.use(passport.session());
-  app.use(flash());
+
 
   // Public directory
   app.use(express.static(path.join(__dirname, '../public')));
