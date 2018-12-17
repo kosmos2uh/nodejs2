@@ -1,0 +1,35 @@
+extends ../../layouts/admin
+
+block content
+
+  section.section-padding
+      hr.bottom-line
+
+      if errors
+        ul
+         for error in errors
+           li!= error.msg
+
+      .card
+        .card-block
+          .card-header
+            i.fa.fa-table 
+            |  #{title}
+            a(href='/admin/gallery' class='m-auto float-right btn btn-info') Go back
+          .card-body
+            .table-responsive
+              form(method='POST', action="", enctype="multipart/form-data")
+                input(type="hidden", name="_csrf", value=csrf)
+                table#dataTable.table.table-bordered(width='100%', cellspacing='0')
+                  tbody
+                    tr.form-group
+                      td
+                        label(for='name') Title:
+                      td 
+                        input#name.form-control(type='text' placeholder='Enter Title' name='name' required='true' value=(undefined===image ? '' : image.name) )
+                      td
+                        label(for='file') File:
+                      td
+                        input#file.form-control(type="file" name="file" size="50")
+                      td
+                         button.btn.btn-primary(type='submit') Upload File

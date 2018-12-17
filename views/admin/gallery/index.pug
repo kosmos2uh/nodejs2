@@ -1,0 +1,32 @@
+extends ../../layouts/admin
+
+block content
+  section.section-padding
+      hr.bottom-line
+      .card.mb-3
+        .card-block
+          .card-header
+            i.fa.fa-table 
+            |  #{title}
+            a(href='/admin/gallery/create' class='float-right btn btn-success') Create new
+          .card-body
+            .table-responsive
+              table#dataTable.table.table-bordered(width='100%', cellspacing='0')
+                thead
+                  tr
+                    th #
+                    th Title
+                    th(colspan=2) Actions
+                tbody
+                  - var i = 0
+
+                  each image in images
+                    - i++
+                    tr
+                      td= i
+                      td 
+                        a(href=image.path) #{image.name}
+                      td
+                        a(href='/admin/gallery/' + image._id + '/update' class="btn btn-warning") Edit
+                      td
+                        a(href='/admin/gallery/' + image._id + '/delete' class="btn btn-danger") Delete

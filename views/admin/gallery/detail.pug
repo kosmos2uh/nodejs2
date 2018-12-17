@@ -1,0 +1,11 @@
+extends ../../layouts/admin
+
+block content
+
+  h1 Picture: #{image.name}
+  img(src='/uploads/' + image.path, style='max-width: 500px;')
+  br
+  br
+  p
+    a.btn.btn-primary(href=image._id + '/delete') Delete Picture
+    a.btn.btn-primary(href=image._id + '/update') Update Picture

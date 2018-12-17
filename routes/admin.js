@@ -20,6 +20,7 @@ router.post('/post/:id/update', controllers.posts_controller.post_update_post);
 router.get('/post/:id', controllers.posts_controller.post_detail);
 
 router.get('/posts', controllers.posts_controller.index);
+router.get('/posts/:page', controllers.posts_controller.list);
 
 router.get('/users', controllers.users_controller.index);
 router.get('/user/:id/update', controllers.users_controller.user_update_get);
@@ -35,5 +36,14 @@ router.get('/category/:id/delete', controllers.categories_controller.category_de
 router.post('/category/:id/delete', controllers.categories_controller.category_delete_post);
 router.get('/category/:id/update', controllers.categories_controller.category_update_get);
 router.post('/category/:id/update', controllers.categories_controller.category_update_post);
+
+router.get('/gallery', controllers.gallery_controller.images_index);
+router.get('/gallery/create', controllers.gallery_controller.image_create_get);
+router.post('/gallery/create',  controllers.gallery_controller.image_create_post);
+router.get('/gallery/:id', controllers.gallery_controller.image_detail);
+router.get('/gallery/:id/delete', controllers.gallery_controller.image_delete_get);
+router.post('/gallery/:id/delete', controllers.gallery_controller.image_delete_post);
+router.get('/gallery/:id/update', controllers.gallery_controller.image_update_get);
+router.post('/gallery/:id/update', controllers.gallery_controller.image_update_post);
 
 module.exports = router;

@@ -50,6 +50,7 @@
     "mongodb": "^3.1.10",
     "mongoose": "^5.3.14",
     "morgan": "^1.9.1",
+    "multer": "^1.4.1",
     "nconf": "^0.10.0",
     "nodemailer": "^4.7.0",
     "osascript": "^1.2.0",

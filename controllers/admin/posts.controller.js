@@ -36,6 +36,29 @@ index: (req, res, next) => {
   });
 },
 
+list: (req, res, next) => {
+
+    var perPage = 2;
+    var page = req.params.page || 1;
+
+    models.Post
+        .find({})
+        .skip((perPage * page) - perPage)
+        .limit(perPage)
+        .exec(function(err, posts) {
+            models.Post.count().exec(function(err, count) {
+                if (err) return next(err)
+                res.render('admin/posts/list', {
+                    title: 'Posts List',
+                    breadcrumb: 'Posts List',
+                    posts: posts,
+                    current: page,
+                    pages: Math.ceil(count / perPage)
+                });
+            });
+        });
+},
+
 post_detail: (req, res, next) => {
 
     async.parallel({
@@ -82,9 +105,9 @@ post_create_post: function(req, res, next) {
     req.checkBody('title', 'Title must not be empty.').notEmpty();
     req.checkBody('content', 'Content must not be empty').notEmpty();
     req.sanitize('title').escape();
-    req.sanitize('content').escape();
+    // req.sanitize('content').escape();
     req.sanitize('title').trim();
-    req.sanitize('content').trim();
+    // req.sanitize('content').trim();
     req.sanitize('category').escape();
 
     var post = new models.Post(
@@ -200,9 +223,9 @@ post_update_post: function(req, res, next) {
     req.checkBody('content', 'Summary must not be empty').notEmpty();
 
     req.sanitize('title').escape();
-    req.sanitize('content').escape();
+    // req.sanitize('content').escape();
     req.sanitize('title').trim();
-    req.sanitize('content').trim();
+    // req.sanitize('content').trim();
     req.sanitize('status').escape();
     req.sanitize('category').escape();
 

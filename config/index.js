@@ -61,5 +61,9 @@ module.exports = {
         smtpUser: process.env.SMTP_USER,
         smtpPass: process.env.SMTP_PASSWORD
     },
-
+    pusher: {
+        appId: process.env.PUSHER_ID,
+        key: process.env.PUSHER_KEY,
+        secret: process.env.PUSHER_SECRET,
+    },
 };
