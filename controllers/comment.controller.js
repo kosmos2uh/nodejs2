@@ -11,6 +11,8 @@ let pusher = new Pusher({
 });
 
 exports.comment_post = (req, res, next) => {
+
+    // сохренение комментов-то есть, но вывод сохраненных так и не допилен. ≈сли уж совсем невмоготу, можно попробовать допилить.
     let comment = new models.Comment(
       {
           author:{
