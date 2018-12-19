@@ -14,11 +14,15 @@ passport.use(new GitHubStrategy({
   function(accessToken, refreshToken, profile, done) {
 
     let searchQuery = {
-      name: profile.displayName
+      profile: {
+          name: profile.displayName
+      }
     };
 
     let updates = {
-      name: profile.displayName,
+        profile: {
+            name: profile.displayName
+        },
       socID: profile.id
     };
 

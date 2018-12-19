@@ -1,0 +1,32 @@
+section
+  .flash-comments
+    .header
+      div
+        img(src='/assets/comments.png')
+      .text Comments
+      | 
+      .text-right Hello #{user.profile.name}
+    form#comment-form.pure-form
+      .comment-form
+        .left-side
+          .row
+            input(type="hidden", name="_csrf", value=csrf)
+            input#post_id(type="hidden", name="post_id", value=post.id)
+            input#new_comment_name(type='text', required, value=user.profile.name, style="text-align:center;", placeholder='Enter Your Name')
+          .row
+            textarea#new_comment_text(placeholder='Enter comment text', required, rows='5' style="text-align:center;")
+        .right-side
+          button.button-secondary.pure-button(type='submit') Send Comment
+    #comments-list.comments-list
+      script#comment-template(type='text/x-template').
+        <div class="user-icon">
+        <img src="/assets/user.png" />
+        </div>
+        <div class="comment-info">
+        <div class="row">
+        <div class="name">{{name}}</div>
+        </div>
+        <div class="row">
+        <div class="text">{{comment}}</div>
+        </div>
+        </div>

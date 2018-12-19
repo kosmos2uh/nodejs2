@@ -9,4 +9,6 @@ router.use('/user', require('./user'));
 router.use('/auth', require('./auth'));
 router.use('/contact', require('./contact'));
 
+router.use('/comment', [acl.check], require('./comment'));
+
 module.exports = router;

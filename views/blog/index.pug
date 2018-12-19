@@ -12,6 +12,6 @@ block content
         hr.bottom-line
         ul
           each val in posts
-            - var ref = "blog/" + val._id
+            - var ref = "/blog/" + val._id
             li
               a.alist(href=ref)= val.title
