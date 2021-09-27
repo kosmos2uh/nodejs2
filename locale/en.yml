@@ -1,0 +1,12 @@
+---
+en:
+  key_with_plurals:
+    one: You have %d new message
+    other: You have %d new messages
+  key_with_placeholder: Hello {{name}}
+  main.view.more: View messages
+  validation.required: Oops! This field is required.
+  signup_button: Sign up now
+  welcome_header: Far far away, behind the word mountains, far from the countries
+    'Vokalia' and Consonantia, there live the blind texts.
+...
