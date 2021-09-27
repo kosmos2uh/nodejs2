@@ -1,0 +1,11 @@
+{
+    "key_with_plurals": {
+        "one": "Tienes %d mensaje nuevo",
+        "other": "Tienes %d mensajes nuevos"
+    },
+    "key_with_placeholder": "Hola, {{name}}",
+    "main.view.more": "Ver mensajes",
+    "validation.required": "¡Vaya! Este campo es obligatorio.",
+    "signup_button": "",
+    "welcome_header": "¡Bienvenido a Lokalise!"
+}

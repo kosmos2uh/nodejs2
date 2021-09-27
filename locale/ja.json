@@ -1,0 +1,10 @@
+{
+    "key_with_plurals": {
+        "other": "%d件の新しいメッセージがあります"
+    },
+    "key_with_placeholder": "こんにちは、{{name}}",
+    "main.view.more": "",
+    "validation.required": "おっと！このフィールドは必須です。",
+    "signup_button": "今すぐ登録",
+    "welcome_header": "Lokaliseへようこそ!"
+}

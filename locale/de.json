@@ -1,0 +1,11 @@
+{
+    "key_with_plurals": {
+        "one": "%d neue Nachricht",
+        "other": "%d neue Nachrichten"
+    },
+    "key_with_placeholder": "",
+    "main.view.more": "",
+    "validation.required": "Dieses Feld ist erforderlich.",
+    "signup_button": "Jetzt anmelden",
+    "welcome_header": "Willkommen bei  Lokalise!"
+}
